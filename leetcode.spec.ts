@@ -60,9 +60,9 @@ test('Leetcode user profile', async ({ page }) => {
 // leetcode.com would re-direct to leetcode.cn if the request is from China. The
 // workaround is to visit leetcode.com twice.
 async function warmUp(page: Page) {
-  await page.goto(`https://leetcode.com/ocavue/`)
+  await page.goto(`https://leetcode.com/problemset/all/`)
   await sleep(SLEEP_MILLISECONDS * 2)
-  await page.goto(`https://leetcode.com/ocavue/`)
+  await page.goto(`https://leetcode.com/problemset/all/`)
   await sleep(SLEEP_MILLISECONDS * 2)
 }
 
