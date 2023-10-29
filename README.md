@@ -19,7 +19,7 @@ LEETCODE_PASSWORD=your_leetcode_password
 LEETCODE_USER_ID_LIST=cuiaoxiang,pandaforever,lxhgww,Yawn_Sean,zrts
 ```
 
-Run `pnpm start` in the terminal. This command will open a Chrome window and start crawling. 
+Run `pnpm start` in the terminal. This command will open a Chrome window and start crawling.
 
 The crawling speed is limited by Leetcode, so it may take some time to crawl all the users. During my test, it took about 10 minutes to crawl 100 users.
 
@@ -60,7 +60,6 @@ The crawled data will be saved in the `data` directory. The data is saved in JSO
   ...
 }
 ```
-
 
 ## License
 
