@@ -34,10 +34,9 @@ test('test', async ({ page }) => {
 
   await login(page, username, password)
 
-  const submissionData = await getAllSubmissionList(page, userIds)
-
   const cwd = process.cwd()
   const dataDir = path.join(cwd, 'data')
+
   const dateString = new Date()
     .toISOString()
     .replace('T', '-')
@@ -46,8 +45,13 @@ test('test', async ({ page }) => {
     .replace('Z', '')
   const dataFilePath = path.join(dataDir, `submission-data-${dateString}.json`)
 
-  await fs.mkdir('data', { recursive: true })
-  await fs.writeFile(dataFilePath, JSON.stringify(submissionData, null, 2))
+  const fileWriter = async (data: unknown) => {
+    console.log(`Writting data to ${dataFilePath}`)
+    await fs.mkdir('data', { recursive: true })
+    await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2))
+  }
+
+  await getAllSubmissionList(page, userIds, fileWriter)
 })
 
 // leetcode.com would re-direct to leetcode.cn if the request is from China. The
@@ -69,20 +73,22 @@ async function login(page: Page, username: string, password: string) {
   await sleep(SLEEP_MILLISECONDS)
 }
 
-async function getAllSubmissionList(page: Page, userIds: string[]) {
+async function getAllSubmissionList(
+  page: Page,
+  userIds: string[],
+  dataWritter: (data: unknown) => Promise<void>,
+) {
   const result: { [userId: string]: Submission[] } = {}
 
   for (const userId of userIds) {
     try {
       result[userId] = await getUserSubmissionList(page, userId)
-
+      await dataWritter(result)
       await sleep(SLEEP_MILLISECONDS)
     } catch (error) {
       console.warn(`Failed to get submission list for user ${userId}`)
     }
   }
-
-  return result
 }
 
 async function getUserSubmissionList(page: Page, userId: string) {
