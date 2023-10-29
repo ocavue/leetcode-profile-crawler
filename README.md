@@ -1,6 +1,6 @@
 # leetcode-profile-crawler
 
-A crawler to collect Leetcode user profile data. It use [Playwright](https://playwright.dev/) to run a true Chrome browser to crawl the data so that it can bypass the anti-crawler mechanism of Leetcode.
+A crawler to collect Leetcode user profile data. It uses [Playwright](https://playwright.dev/) to run a true Chrome browser to crawl the data so that it can bypass the anti-crawler mechanism of Leetcode.
 
 ## Installation
 
