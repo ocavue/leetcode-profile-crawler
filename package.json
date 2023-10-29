@@ -1,41 +1,20 @@
 {
-  "name": "pkg-name",
+  "name": "leetcode-profile-crawler",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.9.2",
-  "description": "",
+  "description": "A crawler collect Leetcode user profile data",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
-  "homepage": "https://github.com/ocavue/pkg-name#readme",
+  "homepage": "https://github.com/ocavue/leetcode-profile-crawler#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ocavue/pkg-name.git"
+    "url": "https://github.com/ocavue/leetcode-profile-crawler.git"
   },
-  "bugs": "https://github.com/ocavue/pkg-name/issues",
+  "bugs": "https://github.com/ocavue/leetcode-profile-crawler/issues",
   "keywords": [],
   "sideEffects": false,
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -57,10 +36,5 @@
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vitest": "^0.34.6"
-  },
-  "renovate": {
-    "extends": [
-      "github>ocavue/config-renovate"
-    ]
   }
 }

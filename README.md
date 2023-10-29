@@ -1,6 +1,6 @@
-# pkg-name
+# leetcode-profile-crawler
 
-[![NPM version](https://img.shields.io/npm/v/pkg-name?color=a1b858&label=)](https://www.npmjs.com/package/pkg-name)
+A crawler collect Leetcode user profile data
 
 ## License
 
