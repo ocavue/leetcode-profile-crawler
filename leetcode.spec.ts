@@ -6,9 +6,10 @@ import path from 'node:path'
 import { test, type Page, type Response } from '@playwright/test'
 
 // Sleep a while after each request to avoid 429 Too Many Requests error.
-const SLEEP_MILLISECONDS = 1000
+// Increase this value if you see this error.
+const SLEEP_MILLISECONDS = 2000
 
-test('test', async ({ page }) => {
+test('Leetcode user profile', async ({ page }) => {
   const userIds = (process.env.LEETCODE_USER_ID_LIST ?? '')
     .split(',')
     .map((userId) => userId.toLowerCase().trim())
