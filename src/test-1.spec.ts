@@ -46,12 +46,14 @@ test('test', async ({ page }) => {
   const dataFilePath = path.join(dataDir, `submission-data-${dateString}.json`)
 
   const fileWriter = async (data: unknown) => {
-    console.log(`Writting data to ${dataFilePath}`)
     await fs.mkdir('data', { recursive: true })
     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2))
   }
 
   await getAllSubmissionList(page, userIds, fileWriter)
+  console.log(
+    `Data writting finished. You can find the data file at ${dataFilePath}`,
+  )
 })
 
 // leetcode.com would re-direct to leetcode.cn if the request is from China. The
@@ -80,8 +82,14 @@ async function getAllSubmissionList(
 ) {
   const result: { [userId: string]: Submission[] } = {}
 
+  let count = 0
+  const totalCount = userIds.length
   for (const userId of userIds) {
     try {
+      count++
+      console.log(
+        `Fetching submission list [${count}/${totalCount}]: ${userId}`,
+      )
       result[userId] = await getUserSubmissionList(page, userId)
       await dataWritter(result)
       await sleep(SLEEP_MILLISECONDS)
@@ -92,8 +100,6 @@ async function getAllSubmissionList(
 }
 
 async function getUserSubmissionList(page: Page, userId: string) {
-  console.log("fetching user's submission list", userId)
-
   await page.goto(`https://leetcode.com/${userId}/`)
 
   const response = await page.waitForResponse(waitForSubmissionListResponse)

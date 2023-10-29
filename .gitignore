@@ -13,3 +13,4 @@ temp
 /playwright-report/
 /playwright/.cache/
 .env
+data
